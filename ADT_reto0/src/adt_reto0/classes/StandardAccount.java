@@ -9,6 +9,6 @@ package adt_reto0.classes;
  *
  * @author nikol
  */
-public class StandardAccount {
+public class StandardAccount extends Account {
     
 }

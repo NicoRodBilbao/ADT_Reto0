@@ -5,10 +5,15 @@
  */
 package adt_reto0.factory;
 
-/**
- *
- * @author nikol
- */
-public class CustomerDAFactory {
+import adt_reto0.dataAccess.DACustomer;
+import adt_reto0.interfaces.Customerable;
+
+public abstract class CustomerDAFactory {
+    
+    private static Customerable c = new DACustomer();
+    
+    public static Customerable getAccessCustomer() {
+        return c;
+    }
     
 }

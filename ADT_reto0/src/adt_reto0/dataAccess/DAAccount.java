@@ -5,10 +5,9 @@
  */
 package adt_reto0.dataAccess;
 
-/**
- *
- * @author nikol
- */
-public class DAAccount {
+import adt_reto0.classes.Account;
+import adt_reto0.interfaces.Accountable;
+
+public class DAAccount implements Accountable{
     
 }

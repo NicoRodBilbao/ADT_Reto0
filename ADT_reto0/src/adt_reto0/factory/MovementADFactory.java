@@ -5,10 +5,15 @@
  */
 package adt_reto0.factory;
 
-/**
- *
- * @author nikol
- */
+import adt_reto0.classes.Movement;
+import adt_reto0.dataAccess.DAMovement;
+import adt_reto0.interfaces.Movementable;
+
 public class MovementADFactory {
     
+    private static Movementable m = new DAMovement();
+    
+    public static Movementable getAccessMovement() {
+        return m;
+    }
 }

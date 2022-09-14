@@ -5,10 +5,9 @@
  */
 package adt_reto0.dataAccess;
 
-/**
- *
- * @author nikol
- */
-public class DAMovement {
+import adt_reto0.classes.Movement; 
+import adt_reto0.interfaces.Movementable;
+
+public class DAMovement implements Movementable{
     
 }

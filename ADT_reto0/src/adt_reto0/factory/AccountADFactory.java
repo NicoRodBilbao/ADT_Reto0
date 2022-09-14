@@ -5,10 +5,15 @@
  */
 package adt_reto0.factory;
 
-/**
- *
- * @author nikol
- */
+import adt_reto0.dataAccess.DAAccount;
+import adt_reto0.interfaces.Accountable;
+
 public class AccountADFactory {
+    
+    private static Accountable a = new DAAccount();
+    
+    public static Accountable getAccessAccount() {
+        return a;
+    }
     
 }

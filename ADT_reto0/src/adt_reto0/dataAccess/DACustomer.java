@@ -5,10 +5,12 @@
  */
 package adt_reto0.dataAccess;
 
+import adt_reto0.classes.Customer;
+import adt_reto0.interfaces.Customerable;
 /**
  *
  * @author nikol
  */
-public class DACustomer {
+public class DACustomer implements Customerable {
     
 }

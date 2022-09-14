@@ -10,5 +10,14 @@ package adt_reto0.classes;
  * @author nikol
  */
 public class Customer {
-    
+    private Integer id;
+    private String firstName;
+    private String lastName;
+    private String middleInitial;
+    private String street;
+    private String city;
+    private String state;
+    private String email;
+    private Integer zip;
+    private Integer phone;
 }
