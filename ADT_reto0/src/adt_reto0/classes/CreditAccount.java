@@ -5,6 +5,10 @@
  */
 package adt_reto0.classes;
 
-public class CreditAccount extends Account {
+/**
+ *
+ * @author nikol
+ */
+public class CreditAccount extends Account implements Serializable {
     
 }

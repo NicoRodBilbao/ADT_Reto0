@@ -5,7 +5,11 @@
  */
 package adt_reto0.classes;
 
-public class Customer {
+/**
+ *
+ * @author nikol
+ */
+public class Customer implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -121,4 +125,5 @@ public class Customer {
     public String toString() {
         return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleInitial=" + middleInitial + ", street=" + street + ", city=" + city + ", state=" + state + ", email=" + email + ", zip=" + zip + ", phone=" + phone + '}';
     }
+
 }

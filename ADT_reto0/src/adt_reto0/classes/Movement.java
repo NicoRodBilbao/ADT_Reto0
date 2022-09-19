@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author nikol
  */
-public class Movement {
+public class Movement implements Serializable {
     private Integer id;
     private Date timestamp;
     private Double amount;
