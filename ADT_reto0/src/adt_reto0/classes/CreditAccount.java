@@ -5,10 +5,6 @@
  */
 package adt_reto0.classes;
 
-/**
- *
- * @author nikol
- */
-public class CreditAccount  extends Account{
+public class CreditAccount extends Account {
     
 }

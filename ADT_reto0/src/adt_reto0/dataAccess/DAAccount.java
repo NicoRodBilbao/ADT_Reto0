@@ -5,10 +5,21 @@
  */
 package adt_reto0.dataAccess;
 
-/**
- *
- * @author nikol
- */
-public class DAAccount {
+import adt_reto0.classes.Account;
+import adt_reto0.interfaces.Accountable;
+
+public class DAAccount implements Accountable{
     
+    void createAccount(Integer customerId) {
+        
+    }
+    
+    void addClientToAccount(Integer customerId, Integer accountId) {
+        
+    }
+    
+    Account getAccountData(Integer accountId) {
+        
+        return null; // TODO return data
+    }
 }
