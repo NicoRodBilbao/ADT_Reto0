@@ -5,10 +5,7 @@
  */
 package adt_reto0;
 
-/**
- *
- * @author nikol
- */
+
 public class Menu {
     
 }

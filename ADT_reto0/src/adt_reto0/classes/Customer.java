@@ -125,5 +125,5 @@ public class Customer implements Serializable {
     public String toString() {
         return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleInitial=" + middleInitial + ", street=" + street + ", city=" + city + ", state=" + state + ", email=" + email + ", zip=" + zip + ", phone=" + phone + '}';
     }
-    
+
 }

@@ -5,10 +5,16 @@
  */
 package adt_reto0.dataAccess;
 
-/**
- *
- * @author nikol
- */
-public class DAMovement {
+import adt_reto0.classes.Movement; 
+import adt_reto0.interfaces.Movementable;
+
+public class DAMovement implements Movementable{
+    void registerMovement(Integer destination, Double amount) { // Preguntar qué coño es destination
+        
+    }
     
+    Movement[] getAccountMovements(Integer accountId) {
+        
+        return null; // TODO return data
+    }
 }
