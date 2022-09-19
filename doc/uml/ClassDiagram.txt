@@ -1,0 +1,85 @@
+@startuml
+top to bottom direction
+
+class		App
+class		Menu
+
+abstract	CustomerDAFactory
+abstract	AccountDAFactory
+abstract	MovementDAFactory
+
+class		Customer {
+	- Integer	id
+	- String	firstName
+	- String 	lastName
+	- String	middleName
+	- String	street
+	- String	city
+	- String	state
+	- Integer	zip
+	- Integer	phone
+	- String	email
+}
+abstract	Account {
+	- Integer	id
+	- String 	description
+ 	- Double 	balance
+	- Double	creditLine
+	- Double	beginBalance
+	- Date		beginBalanceTimestamp
+}
+class		Movement {
+	- Integer	Integer
+	- Date		timestamp
+	- Double	amount
+	- Double	balance
+	- String	description
+}
+
+class		StandardAccount
+class		CreditAccount
+
+interface	Customerable
+interface	Accountable
+interface	Movementable
+
+class		DACustomer {
+	- void		createCustomer(customerId)
+	- Customer	getCustomerData(customerId)
+	- Account[]	getCustomerAccounts(customerId)
+}
+class		DAAccount {
+	- void 		createAccount(customerId)
+	- void		addClientToAccount(customerId, accountId)
+	- Account	getAccountData(accountId)
+}
+class		DAMovement {
+	- void		registerMovement(destination, amount)
+	- Movement[]	getAccountMovements(id)
+}
+
+Account	--|> StandardAccount
+Account	--|> CreditAccount
+
+Customer "N" -right-> "M" Account
+Account  "1" -right-> "n" Movement
+
+DACustomer .down|> Customerable
+DAAccount  .down|> Accountable
+DAMovement .down|> Movementable
+
+CustomerDAFactory -down-> DACustomer  
+AccountDAFactory  -down-> DAAccount  
+MovementDAFactory -down-> DAMovement  
+
+App --> Menu
+
+Menu --> CustomerDAFactory
+Menu --> AccountDAFactory
+Menu --> MovementDAFactory
+
+DACustomer --> Customer
+DAAccount  --> Account
+DAMovement --> Movement
+
+@enduml
