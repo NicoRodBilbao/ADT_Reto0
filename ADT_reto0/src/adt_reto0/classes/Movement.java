@@ -5,7 +5,7 @@
  */
 package adt_reto0.classes;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  *
@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Movement {
     private Integer id;
-    private Date timestamp;
+    private LocalDate timestamp;
     private Double amount;
     private Double balance;
     private String description;
@@ -21,7 +21,7 @@ public class Movement {
     public Movement() {
     }
 
-    public Movement(Integer id, Date timestamp, Double amount, Double balance, String description) {
+    public Movement(Integer id, LocalDate timestamp, Double amount, Double balance, String description) {
         this.id = id;
         this.timestamp = timestamp;
         this.amount = amount;
@@ -37,11 +37,11 @@ public class Movement {
         this.id = id;
     }
 
-    public Date getTimestamp() {
+    public LocalDate getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(LocalDate timestamp) {
         this.timestamp = timestamp;
     }
 
