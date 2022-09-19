@@ -9,6 +9,6 @@ package adt_reto0.classes;
  *
  * @author nikol
  */
-public class CreditAccount {
+public class CreditAccount  extends Account{
     
 }
