@@ -9,6 +9,6 @@ package adt_reto0.classes;
  *
  * @author nikol
  */
-public class CreditAccount implements Serializable {
+public class CreditAccount extends Account implements Serializable {
     
 }
