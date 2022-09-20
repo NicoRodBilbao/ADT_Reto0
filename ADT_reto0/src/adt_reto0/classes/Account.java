@@ -19,17 +19,20 @@ public class Account {
         private Double beginBalance;
         //no sabemos si es localdate o no.
         private Date beginBalanceTimestamp;
-
+        private Integer type;
+        
+        
     public Account() {
     }
 
-    public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp) {
+    public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp, Integer type) {
         this.id = id;
         this.description = description;
         this.balance = balance;
         this.creditLine = creditLine;
         this.beginBalance = beginBalance;
         this.beginBalanceTimestamp = beginBalanceTimestamp;
+        this.type = type;
     }
 
     public Integer getId() {
@@ -79,10 +82,18 @@ public class Account {
     public void setBeginBalanceTimestamp(Date beginBalanceTimestamp) {
         this.beginBalanceTimestamp = beginBalanceTimestamp;
     }
+    
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", description=" + description + ", balance=" + balance + ", creditLine=" + creditLine + ", beginBalance=" + beginBalance + ", beginBalanceTimestamp=" + beginBalanceTimestamp +'}';
+        return "Account{" + "id=" + id + ", description=" + description + ", balance=" + balance + ", creditLine=" + creditLine + ", beginBalance=" + beginBalance + ", beginBalanceTimestamp=" + beginBalanceTimestamp + ", type= " + type + '}';
     }
         
         
