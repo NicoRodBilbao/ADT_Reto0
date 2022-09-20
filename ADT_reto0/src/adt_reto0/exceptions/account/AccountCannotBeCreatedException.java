@@ -1,4 +1,4 @@
-package adt_reto0.exceptions.Account;
+package adt_reto0.exceptions.account;
 
 public class AccountCannotBeCreateException
 extends Exception {

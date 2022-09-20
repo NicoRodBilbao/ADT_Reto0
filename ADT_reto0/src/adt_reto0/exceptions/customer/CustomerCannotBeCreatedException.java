@@ -1,4 +1,4 @@
-package adt_reto0.exceptions.Customer;
+package adt_reto0.exceptions.customer;
 
 public class CustomerCannotBeCreateException
 extends Exception {

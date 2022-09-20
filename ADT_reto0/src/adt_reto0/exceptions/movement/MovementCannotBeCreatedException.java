@@ -1,4 +1,4 @@
-package adt_reto0.exceptions.Movement;
+package adt_reto0.exceptions.movement;
 
 public class MovementCannotBeCreatedException
 extends Exception {
