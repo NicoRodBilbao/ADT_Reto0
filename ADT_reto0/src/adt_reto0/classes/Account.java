@@ -19,8 +19,13 @@ public class Account {
         private Double beginBalance;
         //no sabemos si es localdate o no.
         private Date beginBalanceTimestamp;
+        private String type;
 
     public Account() {
+    }
+    
+    public Account(Integer id) {
+        this.id = id;
     }
 
     public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp) {
