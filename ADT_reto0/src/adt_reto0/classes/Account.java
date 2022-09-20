@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author nikol
  */
-public class Account {
+public class Account implements Serializable {
         private Integer id;
         private String description;
         private Double balance;
@@ -90,6 +90,5 @@ public class Account {
     public String toString() {
         return "Account{" + "id=" + id + ", description=" + description + ", balance=" + balance + ", creditLine=" + creditLine + ", beginBalance=" + beginBalance + ", beginBalanceTimestamp=" + beginBalanceTimestamp +'}';
     }
-        
         
 }

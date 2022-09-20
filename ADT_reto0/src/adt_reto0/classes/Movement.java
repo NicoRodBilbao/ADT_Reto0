@@ -11,7 +11,7 @@ import java.time.LocalDate;
  *
  * @author nikol
  */
-public class Movement {
+public class Movement implements Serializable {
     private Integer id;
     private LocalDate timestamp;
     private Double amount;

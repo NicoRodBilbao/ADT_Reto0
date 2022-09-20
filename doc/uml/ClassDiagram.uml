@@ -10,6 +10,7 @@ abstract	MovementDAFactory
 
 class		Customer {
 	- Integer	id
+	- Col<Account>	accounts
 	- String	firstName
 	- String 	lastName
 	- String	middleName
@@ -20,13 +21,16 @@ class		Customer {
 	- Integer	phone
 	- String	email
 }
-abstract	Account {
+class		Account {
 	- Integer	id
+	- Col<Customer>	customers
+	- Col<Movement> movements
 	- String 	description
  	- Double 	balance
 	- Double	creditLine
 	- Double	beginBalance
 	- Date		beginBalanceTimestamp
+	- AccountType	Type
 }
 class		Movement {
 	- Integer	Integer
@@ -35,9 +39,6 @@ class		Movement {
 	- Double	balance
 	- String	description
 }
-
-class		StandardAccount
-class		CreditAccount
 
 interface	Customerable
 interface	Accountable
@@ -50,23 +51,17 @@ class		DACustomer {
 }
 class		DAAccount {
 	- void 		createAccount(customerId)
-	- void		addClientToAccount(customerId, accountId)
+	- void		addClientToAccount(customerId, acctId)
 	- Account	getAccountData(accountId)
 }
 class		DAMovement {
-	- void		registerMovement(destination, amount)
-	- Movement[]	getAccountMovements(id)
+	- void		registerMovement(src, dst, amount)
+	- Movement[]	getAccountMovements(accId)
 }
 
-Account	--|> StandardAccount
-Account	--|> CreditAccount
-
-Customer "N" -right-> "M" Account
-Account  "1" -right-> "n" Movement
-
-DACustomer .down|> Customerable
-DAAccount  .down|> Accountable
-DAMovement .down|> Movementable
+DACustomer .left.|> Customerable
+DAAccount  .left.|> Accountable
+DAMovement .left.|> Movementable
 
 CustomerDAFactory -down-> DACustomer  
 AccountDAFactory  -down-> DAAccount  
@@ -78,8 +73,12 @@ Menu --> CustomerDAFactory
 Menu --> AccountDAFactory
 Menu --> MovementDAFactory
 
-DACustomer --> Customer
-DAAccount  --> Account
-DAMovement --> Movement
+Customerable -down-> Customer
+Accountable  -down-> Account
+Movementable -down-> Movement
+
+Movementable --> Account
+Customerable --> Account
+Accountable  --> Customer
 
 @enduml
