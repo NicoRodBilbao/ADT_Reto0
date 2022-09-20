@@ -5,3 +5,8 @@ TASKS
 - [ ] Exception manager
 - [ ] Data access with mysql
 - [ ] Data access with files
+- [x] Class Diagram
+- [ ] Use case Diagram
+- [ ] Tests
+  - [ ] SQL data access tests
+  - [ ] File data access tests
