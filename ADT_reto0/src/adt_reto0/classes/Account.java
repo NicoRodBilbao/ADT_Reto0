@@ -19,7 +19,7 @@ public class Account {
         private Double beginBalance;
         //no sabemos si es localdate o no.
         private Date beginBalanceTimestamp;
-        private String type;
+        private Integer type;
 
     public Account() {
     }
@@ -28,13 +28,14 @@ public class Account {
         this.id = id;
     }
 
-    public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp) {
+    public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp, Integer type) {
         this.id = id;
         this.description = description;
         this.balance = balance;
         this.creditLine = creditLine;
         this.beginBalance = beginBalance;
         this.beginBalanceTimestamp = beginBalanceTimestamp;
+        this.type = type;
     }
 
     public Integer getId() {
