@@ -23,8 +23,10 @@ public class Customer implements Serializable {
 
     public Customer() {
     }
-
     
+    public Customer(Integer id) {
+        this.id = id;
+    }
     
     public Customer(Integer id, String firstName, String lastName, String middleInitial, String street, String city, String state, String email, Integer zip, Integer phone) {
         this.id = id;
@@ -38,7 +40,6 @@ public class Customer implements Serializable {
         this.zip = zip;
         this.phone = phone;
     }
-
     
     
     public Integer getId() {

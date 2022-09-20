@@ -19,17 +19,23 @@ public class Account implements Serializable {
         private Double beginBalance;
         //no sabemos si es localdate o no.
         private Date beginBalanceTimestamp;
+        private Integer type;
 
     public Account() {
     }
+    
+    public Account(Integer id) {
+        this.id = id;
+    }
 
-    public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp) {
+    public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp, Integer type) {
         this.id = id;
         this.description = description;
         this.balance = balance;
         this.creditLine = creditLine;
         this.beginBalance = beginBalance;
         this.beginBalanceTimestamp = beginBalanceTimestamp;
+        this.type = type;
     }
 
     public Integer getId() {
