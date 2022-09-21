@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package adt_reto0.classes;
-
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -21,12 +21,12 @@ public class Movement implements Serializable {
     public Movement() {
     }
 
-    public Movement(Integer id, Double amount, Double balance, String description) {
+    public Movement(Integer id, Double amount, Double balance, String description, LocalDate timestamp) {
         this.id = id;
-        timestamp = LocalDate.now();
         this.amount = amount;
         this.balance = balance;
         this.description = description;
+        timestamp = LocalDate.now();
     }
 
     public Integer getId() {
