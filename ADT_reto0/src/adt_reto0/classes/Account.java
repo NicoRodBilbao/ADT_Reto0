@@ -5,13 +5,14 @@
  */
 package adt_reto0.classes;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  *
  * @author nikol
  */
-public class Account {
+public class Account implements Serializable{
         private Integer id;
         private String description;
         private Double balance;

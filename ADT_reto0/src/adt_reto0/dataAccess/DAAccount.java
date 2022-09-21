@@ -32,16 +32,15 @@ public class DAAccount extends MasterConnection implements Accountable {
     
     
         
-    private  void createAccount() {
+    public void createAccount(Account personalData) {
             
             try {
                   openConnection();
-                  Integer newId;
                   System.out.println("Insert the new id");
-                  newId = sc.nextInt();
+                  personalData.setId(sc.nextInt());
                   //we search if there is an account with the same id
                   stmt = con.prepareStatement(searchAccount);
-                  stmt.setInt(1,newId);
+                  stmt.setInt(1,personalData.getId());
                   rs = stmt.executeQuery();
                   
                   
@@ -57,22 +56,28 @@ public class DAAccount extends MasterConnection implements Accountable {
                   }else {
                       //Don't exist any account with that id, we can create a new one.
                       stmt = con.prepareStatement(createAccount);
-                      stmt.setInt(1, newId);
+                      stmt.setInt(1, personalData.getId());
                       System.out.println("What is the actual balance of the account?");
-                      stmt.setDouble(2, sc.nextDouble());
+                      personalData.setBalance(sc.nextDouble());
+                      stmt.setDouble(2, personalData.getBalance());
                       System.out.println("What was the beginning balance of the account?");
-                      stmt.setDouble(3, sc.nextDouble());
+                      personalData.setBeginBalance( sc.nextDouble());
+                      stmt.setDouble(3,personalData.getBeginBalance());
                       System.out.println("Insert the begin balance timestamp (dd/MM/yyyy)");
                       String dateLikeText = sc.next();
                       SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                       Date date  = sdf.parse(dateLikeText);
-                      stmt.setDate(4, (java.sql.Date) date);
+                      personalData.setBeginBalanceTimestamp(date);
+                      stmt.setDate(4, (java.sql.Date) personalData.getBeginBalanceTimestamp());
                       System.out.println("Insert the credit line.");
-                      stmt.setDouble(5, sc.nextDouble());
+                      personalData.setCreditLine(sc.nextDouble());
+                      stmt.setDouble(5, personalData.getCreditLine());
                       System.out.println("Insert a short description for the account");
-                      stmt.setString(6, sc.next());
-                      System.out.println("Insert the type of the account (0-Debit/1-Credit)");
-                      stmt.setInt(7, sc.nextInt());
+                      personalData.setDescription(sc.next());
+                      stmt.setString(6, personalData.getDescription());
+                      System.out.println("Insert the type of the account (0-Standard/1-Credit)");
+                      personalData.setType(sc.nextInt());
+                      stmt.setInt(7, personalData.getType());
                       
                       stmt.executeUpdate();
                   }
@@ -89,7 +94,7 @@ public class DAAccount extends MasterConnection implements Accountable {
     
     }
     
-    private void addClientToAccount(Integer customerId, Integer accountId) {
+    public void addClientToAccount(Integer customerId, Integer accountId) {
         try {
             openConnection();
             stmt = con.prepareStatement(searchCustomerId);
@@ -119,11 +124,34 @@ public class DAAccount extends MasterConnection implements Accountable {
         }
     }
     
-    private Account getAccountData(Integer accountId) {
-        Account data = null;
+    public Account getAccountData(Integer accountId) {
+        Account personalAcc = null;
+        try {
+            openConnection();
+            stmt = con.prepareStatement(searchAccount);
+            System.out.println("What is the id of the account you want to search?");
+            stmt.setInt(1, sc.nextInt());
+            rs = stmt.executeQuery();
+            
+            //We search the wanted account and if it exists we fill the data
+            if (rs.next()) { 
+                personalAcc.setId(rs.getInt(1));
+                personalAcc.setBalance(rs.getDouble(2));
+                personalAcc.setBeginBalance(rs.getDouble(3));
+                personalAcc.setBeginBalanceTimestamp(rs.getDate(4));
+                personalAcc.setCreditLine(rs.getDouble(5));
+                personalAcc.setDescription(rs.getString(6));
+                personalAcc.setType(rs.getInt(7));
+            }
+            
+        } catch (Exception e) {
+        }finally {
+            closeConnection();
+        }
         
         
-        return data;
+        
+        return personalAcc;
     }
 
 }
