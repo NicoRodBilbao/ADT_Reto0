@@ -13,13 +13,11 @@ public abstract class MasterConnection {
     protected ResultSet rs;
     // access to the configuration file.
     protected ResourceBundle configFile = 
-        ResourceBundle.getBundle("controller.config");;
+        ResourceBundle.getBundle("adt_reto0.config");;
     protected String 
-        db = configFile.getString("DB"),
         url = configFile.getString("Conn"),
         user = configFile.getString("DBUser"),
-        pass = configFile.getString("DBPass"),
-        driver = configFile.getString("Driver");
+        pass = configFile.getString("DBPass");
     
 
     protected void openConnection() {

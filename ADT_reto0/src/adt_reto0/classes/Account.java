@@ -5,6 +5,7 @@
  */
 package adt_reto0.classes;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
