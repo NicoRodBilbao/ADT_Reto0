@@ -17,16 +17,18 @@ public class Movement implements Serializable {
     private Double amount;
     private Double balance;
     private String description;
+    private Double destination;
 
     public Movement() {
     }
 
-    public Movement(Integer id, Double amount, Double balance, String description, Date timestamp) {
+    public Movement(Integer id, Double amount, Double balance, String description, Date timestamp, Double destination) {
         this.id = id;
         this.amount = amount;
         this.balance = balance;
         this.description = description;
         this.timestamp = timestamp;
+        this.destination = destination;
     }
 
     public Integer getId() {
@@ -68,10 +70,15 @@ public class Movement implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    @Override
-    public String toString() {
-        return "Movement{" + "id=" + id + ", timestamp=" + timestamp + ", amount=" + amount + ", balance=" + balance + ", description=" + description + '}';
+    
+    public Double getDestination() {
+        return destination;
     }
     
+    public void setDestination(Double destination) {
+        this.destination = destination;
+    }
+            
+
+   
 }

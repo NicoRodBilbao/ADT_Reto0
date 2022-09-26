@@ -5,9 +5,13 @@
  */
 package adt_reto0.dataAccess;
 
-
+import adt_reto0.classes.Movement;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -39,18 +43,30 @@ public class DAMovementTest {
 
     @Test
     public void testRegisterMovement() {
-        DAMovement mo = new DAMovement();
-        mo.registerMovement(1234455, Double.MIN_NORMAL);
+        Movement movement = new Movement();
+        movement.setId(9);
+        movement.setTimestamp(Date.valueOf(LocalDate.now()));
+        movement.setAmount(Double.MIN_NORMAL);
+        movement.setBalance(Double.MIN_NORMAL);
+        movement.setDescription("Desposit");
+        Double account_id = null; //2654785441
+        String s = "2654785441";
+        movement.setDestination(Double.valueOf(s));
         
+        DAMovement mo = new DAMovement();
+        mo.registerMovement(account_id, movement.getAmount());
         
     }
     
     public void testGetAccountMovements() {
         DAMovement mo = new DAMovement();
-        mo.getAccountMovements(234566);
+        Double account_id = null; 
+        String s = "2654785441";
+        account_id.valueOf(s);
+        
+        mo.getAccountMovements(account_id);
+        
         
     }
-    
-    
     
 }

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class DAMovement extends MasterConnection implements Movementable{
     private PreparedStatement stmt;
     
-    void registerMovement(Integer destination, Double amount) {
+    void registerMovement(Double destination, Double amount) {
 		try {
                     openConnection();
                     String descripcion;
@@ -27,11 +27,11 @@ public class DAMovement extends MasterConnection implements Movementable{
                             descripcion="Payment";
                         }
                         stmt = con.prepareStatement(getBalance);
-                        stmt.setInt(1, destination);
+                        stmt.setDouble(1, destination);
                         rs = stmt.executeQuery();
                         double balance = rs.getDouble(1);
                         stmt = con.prepareStatement(contarID);
-                        stmt.setInt(1, destination);
+                        stmt.setDouble(1, destination);
                         rs = stmt.executeQuery();
                         int id = rs.getInt(1) + 2;
                         
@@ -41,7 +41,7 @@ public class DAMovement extends MasterConnection implements Movementable{
                     stmt.setDouble(3, balance + amount);//seleccionar balance de cuentas en una variable y sumale amount
                     stmt.setString(4, descripcion);//que le mande un String
                     stmt.setDate(5, Date.valueOf(LocalDate.now()));//recoger fecha y hora de ahora 
-                    stmt.setInt(6, destination);//destination es la cuenta
+                    stmt.setDouble(6, destination);//destination es la cuenta
                     
                     stmt.executeUpdate();
 
@@ -53,13 +53,13 @@ public class DAMovement extends MasterConnection implements Movementable{
 		}
     }
     
-    ArrayList getAccountMovements(Integer accountId) {
+    ArrayList getAccountMovements(Double accountId) {
         
          ArrayList arrMovement = new ArrayList<Movement>();
         
          try {
             stmt = con.prepareStatement(recogerMovimientos);
-            stmt.setInt(1, accountId);
+            stmt.setDouble(1, accountId);
             rs = stmt.executeQuery();
             for (int i = 1; i <= arrMovement.size(); i++) {
                 rs.next();
@@ -68,7 +68,8 @@ public class DAMovement extends MasterConnection implements Movementable{
                         rs.getDouble(2),    //amount
                         rs.getDouble(3),   //balance
                         rs.getString(4),  //descripcion
-                        rs.getDate(5));  //Recoge Date (No esta correcto, me da error el Date)
+                        rs.getDate(5), 
+                        accountId);  //Recoge Date (No esta correcto, me da error el Date)
                         
                 arrMovement.add(movement);
             }
