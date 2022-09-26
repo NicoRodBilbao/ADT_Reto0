@@ -8,14 +8,16 @@ package adt_reto0.dataAccess;
 import adt_reto0.classes.Movement; 
 import adt_reto0.interfaces.Movementable;
 import adt_reto0.MasterConnection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 
 public class DAMovement extends MasterConnection implements Movementable{
-     private PreparedStatement stmt;
-    private void registerMovement(Integer destination, Double amount) {
+    private PreparedStatement stmt;
+    
+    void registerMovement(Integer destination, Double amount) {
 		try {
                     openConnection();
                     String descripcion;
@@ -38,7 +40,7 @@ public class DAMovement extends MasterConnection implements Movementable{
                     stmt.setDouble(2, amount);//a insertar o restar
                     stmt.setDouble(3, balance + amount);//seleccionar balance de cuentas en una variable y sumale amount
                     stmt.setString(4, descripcion);//que le mande un String
-                    stmt.setDate(5, LocalDate.now());//recoger fecha y hora de ahora (No esta correcto, me da error el Date)
+                    stmt.setDate(5, Date.valueOf(LocalDate.now()));//recoger fecha y hora de ahora 
                     stmt.setInt(6, destination);//destination es la cuenta
                     
                     stmt.executeUpdate();
@@ -51,7 +53,7 @@ public class DAMovement extends MasterConnection implements Movementable{
 		}
     }
     
-    private ArrayList getAccountMovements(Integer accountId) {
+    ArrayList getAccountMovements(Integer accountId) {
         
          ArrayList arrMovement = new ArrayList<Movement>();
         

@@ -5,7 +5,7 @@
  */
 package adt_reto0.classes;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 
 /**
  *
@@ -13,7 +13,7 @@ import java.time.LocalDate;
  */
 public class Movement implements Serializable {
     private Integer id;
-    private LocalDate timestamp;
+    private Date timestamp;
     private Double amount;
     private Double balance;
     private String description;
@@ -21,12 +21,12 @@ public class Movement implements Serializable {
     public Movement() {
     }
 
-    public Movement(Integer id, Double amount, Double balance, String description, LocalDate timestamp) {
+    public Movement(Integer id, Double amount, Double balance, String description, Date timestamp) {
         this.id = id;
         this.amount = amount;
         this.balance = balance;
         this.description = description;
-        timestamp = LocalDate.now();
+        this.timestamp = timestamp;
     }
 
     public Integer getId() {
@@ -37,11 +37,11 @@ public class Movement implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDate timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
