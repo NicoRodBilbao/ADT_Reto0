@@ -6,6 +6,7 @@
 package adt_reto0.dataAccess;
 
 import adt_reto0.classes.Account;
+import adt_reto0.classes.Customer;
 import adt_reto0.interfaces.Accountable;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -38,7 +39,8 @@ public class DAAccountTest {
         testAcc.setType(1);
         
         try {
-            assertEquals(acc.getAccountData(testAcc.getId()), testAcc);
+            
+            assertEquals(acc.getAccountData(testAcc.getId()).toString(), testAcc.toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,10 +50,32 @@ public class DAAccountTest {
     
     @Test 
     public void testaddClientToAccount(){
+        Account testAcc = new Account();
+        Customer testCust = new Customer();
+        testAcc.setId(1569874954);
+        testCust.setId(299985563);
+        assertTrue(acc.addClientToAccount( testCust.getId(), testAcc.getId()));
+        
+        
     }
     
     @Test 
     public void testgetAccountData(){
+        Account accTest = new Account();
+        accTest.setId(1569874954);
+        accTest.setBalance(999.99);
+        accTest.setBeginBalance(999.99);
+        accTest.setBeginBalanceTimestamp(new Date(2019, 01, 14, 19, 19, 04));
+        accTest.setCreditLine( 0.0);
+        accTest.setDescription("Savings Account");
+        accTest.setType(0);
+        
+        
+        try {
+              assertEquals(acc.getAccountData(accTest.getId()).toString(), accTest.toString());
+        } catch (Exception e) {
+        }
+      
     }
     
 }

@@ -94,7 +94,8 @@ public class DAAccount extends MasterConnection implements Accountable {
     
     }
     
-    public void addClientToAccount(Integer customerId, Integer accountId) {
+    public boolean addClientToAccount(Integer customerId, Integer accountId) {
+        boolean added = false;
         try {
             openConnection();
             stmt = con.prepareStatement(searchCustomerId);
@@ -110,6 +111,7 @@ public class DAAccount extends MasterConnection implements Accountable {
                     stmt.setInt(1, customerId);
                     stmt.setInt(2, accountId);
                     stmt.executeUpdate();
+                    added = true;
                 } else {
                     System.out.println("The account doesn't exist.");
                 }
@@ -122,6 +124,7 @@ public class DAAccount extends MasterConnection implements Accountable {
         }finally{
             closeConnection();
         }
+        return added;
     }
     
     public Account getAccountData(Integer accountId) {

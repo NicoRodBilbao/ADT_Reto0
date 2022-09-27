@@ -14,7 +14,7 @@ import adt_reto0.classes.Account;
 public interface Accountable {
         public void createAccount(Account personalData);
         
-        public void addClientToAccount(Integer customerId, Integer accountId);
+        public boolean addClientToAccount(Integer customerId, Integer accountId);
         
         public Account getAccountData(Integer accountId);
                 

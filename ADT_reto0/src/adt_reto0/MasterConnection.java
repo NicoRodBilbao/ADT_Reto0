@@ -13,7 +13,7 @@ public abstract class MasterConnection {
     protected ResultSet rs;
     // access to the configuration file.
     protected ResourceBundle configFile = 
-        ResourceBundle.getBundle("controller.config");;
+        ResourceBundle.getBundle("adt_reto0.config");;
     protected String 
         db = configFile.getString("DB"),
         url = configFile.getString("Conn"),
