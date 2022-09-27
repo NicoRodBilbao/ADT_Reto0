@@ -6,6 +6,7 @@
 package adt_reto0.classes;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Objects;
 
 /**
  *
@@ -78,7 +79,22 @@ public class Movement implements Serializable {
     public void setDestination(Double destination) {
         this.destination = destination;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Movement other = (Movement) obj;
+        return true;
+    }
             
-
+    
    
 }

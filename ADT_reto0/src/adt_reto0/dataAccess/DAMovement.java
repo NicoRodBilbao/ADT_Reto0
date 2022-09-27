@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class DAMovement extends MasterConnection implements Movementable{
     private PreparedStatement stmt;
     
-    void registerMovement(Double destination, Double amount) {
+    public void registerMovement(Double destination, Double amount) {
 		try {
                     openConnection();
                     String descripcion;
@@ -30,7 +30,7 @@ public class DAMovement extends MasterConnection implements Movementable{
                         stmt.setDouble(1, destination);
                         rs = stmt.executeQuery();
                         double balance = rs.getDouble(1);
-                        stmt = con.prepareStatement(contarID);
+                        stmt = con.prepareStatement(countID);
                         stmt.setDouble(1, destination);
                         rs = stmt.executeQuery();
                         int id = rs.getInt(1) + 2;
@@ -57,7 +57,7 @@ public class DAMovement extends MasterConnection implements Movementable{
        Movement mov = null;
         try {
             openConnection();
-            stmt = con.prepareStatement(recogerMovimiento);
+            stmt = con.prepareStatement(getMovement);
             stmt.setInt(1, id);
             rs = stmt.executeQuery();
                 mov = new Movement(
@@ -76,7 +76,7 @@ public class DAMovement extends MasterConnection implements Movementable{
         return mov; 
     }
     
-    ArrayList getAccountMovements(Double accountId) {
+    public ArrayList getAccountMovements(Double accountId) {
         
          ArrayList arrMovement = new ArrayList<Movement>();
         
@@ -103,9 +103,9 @@ public class DAMovement extends MasterConnection implements Movementable{
         return arrMovement; // TODO return data
     }
     
-private final String recogerMovimiento = "SELECT amount, balance, description, timestamp, account_id FROM movement where id=?";
+private final String getMovement = "SELECT amount, balance, description, timestamp, account_id FROM movement where id=?";
 private final String registerMovement = "Insert into movement values (?,?,?,?,?,?);";
 private final String getBalance = "Select balance from account where id = ?;";
-private final String contarID = "SELECT count(id) FROM movement";
+private final String countID = "SELECT count(id) FROM movement";
 private final String recogerMovimientos = "SELECT id, amount, balance, description, timestamp FROM movement where account_id=?";
 }

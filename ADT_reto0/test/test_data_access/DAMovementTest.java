@@ -8,10 +8,10 @@ package adt_reto0.dataAccess;
 import adt_reto0.classes.Movement;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -41,6 +41,7 @@ public class DAMovementTest {
     public void tearDown() {
     }
 
+    
     @Test
     public void testRegisterMovement() {
         Movement movement = new Movement();
@@ -58,7 +59,6 @@ public class DAMovementTest {
         
         Assert.assertTrue(movement.equals(mo.getMovement(9))); 
         
-        
     }
     
     public void testGetAccountMovements() {
@@ -71,5 +71,7 @@ public class DAMovementTest {
         
         
     }
+    
+    
     
 }
