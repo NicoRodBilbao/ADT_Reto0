@@ -18,6 +18,7 @@ public abstract class MasterConnection {
         url = configFile.getString("Conn"),
         user = configFile.getString("DBUser"),
         pass = configFile.getString("DBPass");
+
     
 
     protected void openConnection() {

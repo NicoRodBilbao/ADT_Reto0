@@ -7,11 +7,9 @@ package adt_reto0.classes;
 
 import java.io.Serializable;
 
-/**
- *
- * @author nikol
- */
-public class Customer implements Serializable {
+
+public class Customer implements Serializable{
+
     private Integer id;
     private String firstName;
     private String lastName;
