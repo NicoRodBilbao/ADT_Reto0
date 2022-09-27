@@ -5,14 +5,11 @@
  */
 package adt_reto0;
 
-/**
- *
- * @author nikol
- */
 public class App {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        Menu m = new Menu();
+        m.start();
     }
     
 }

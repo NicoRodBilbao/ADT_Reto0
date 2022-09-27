@@ -156,5 +156,4 @@ public class DAAccount extends MasterConnection implements Accountable {
         
         return personalAcc;
     }
-
 }

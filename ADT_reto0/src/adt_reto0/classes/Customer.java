@@ -7,11 +7,9 @@ package adt_reto0.classes;
 
 import java.io.Serializable;
 
-/**
- *
- * @author nikol
- */
+
 public class Customer implements Serializable{
+
     private Integer id;
     private String firstName;
     private String lastName;
@@ -25,8 +23,10 @@ public class Customer implements Serializable{
 
     public Customer() {
     }
-
     
+    public Customer(Integer id) {
+        this.id = id;
+    }
     
     public Customer(Integer id, String firstName, String lastName, String middleInitial, String street, String city, String state, String email, Integer zip, Integer phone) {
         this.id = id;
@@ -40,7 +40,6 @@ public class Customer implements Serializable{
         this.zip = zip;
         this.phone = phone;
     }
-
     
     
     public Integer getId() {
@@ -127,7 +126,5 @@ public class Customer implements Serializable{
     public String toString() {
         return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleInitial=" + middleInitial + ", street=" + street + ", city=" + city + ", state=" + state + ", email=" + email + ", zip=" + zip + ", phone=" + phone + '}';
     }
-    
-    
-    
+
 }

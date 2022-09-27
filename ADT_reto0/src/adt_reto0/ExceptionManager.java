@@ -3,7 +3,7 @@ package adt_reto0;
 public class ExceptionManager {
 
     private ExceptionManager myExceptionManager;
-    
+
     private ExceptionManager() {
         //TODO?
     }
@@ -14,6 +14,7 @@ public class ExceptionManager {
         return this.myExceptionManager;
     }
     
+
     private void throwException(int Henrique) {
         //TODO
     }

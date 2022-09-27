@@ -15,11 +15,10 @@ public abstract class MasterConnection {
     protected ResourceBundle configFile = 
         ResourceBundle.getBundle("adt_reto0.config");;
     protected String 
-        db = configFile.getString("DB"),
         url = configFile.getString("Conn"),
         user = configFile.getString("DBUser"),
-        pass = configFile.getString("DBPass"),
-        driver = configFile.getString("Driver");
+        pass = configFile.getString("DBPass");
+
     
 
     protected void openConnection() {

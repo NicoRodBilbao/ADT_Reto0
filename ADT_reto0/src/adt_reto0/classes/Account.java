@@ -8,10 +8,6 @@ package adt_reto0.classes;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- *
- * @author nikol
- */
 public class Account implements Serializable{
         private Integer id;
         private String description;
@@ -21,9 +17,12 @@ public class Account implements Serializable{
         //no sabemos si es localdate o no.
         private Date beginBalanceTimestamp;
         private Integer type;
-        
-        
+
     public Account() {
+    }
+    
+    public Account(Integer id) {
+        this.id = id;
     }
 
     public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp, Integer type) {
@@ -96,6 +95,5 @@ public class Account implements Serializable{
     public String toString() {
         return "Account{" + "id=" + id + ", description=" + description + ", balance=" + balance + ", creditLine=" + creditLine + ", beginBalance=" + beginBalance + ", beginBalanceTimestamp=" + beginBalanceTimestamp + ", type= " + type + '}';
     }
-        
         
 }
