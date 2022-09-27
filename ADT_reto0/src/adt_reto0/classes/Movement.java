@@ -4,9 +4,8 @@
  * and open the template in the editor.
  */
 package adt_reto0.classes;
-
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.sql.Date;
 
 /**
  *
@@ -14,20 +13,22 @@ import java.time.LocalDate;
  */
 public class Movement implements Serializable {
     private Integer id;
-    private LocalDate timestamp;
+    private Date timestamp;
     private Double amount;
     private Double balance;
     private String description;
+    private Double destination;
 
     public Movement() {
     }
 
-    public Movement(Integer id, Double amount, Double balance, String description) {
+    public Movement(Integer id, Double amount, Double balance, String description, Date timestamp, Double destination) {
         this.id = id;
-        timestamp = LocalDate.now();
         this.amount = amount;
         this.balance = balance;
         this.description = description;
+        this.timestamp = timestamp;
+        this.destination = destination;
     }
 
     public Integer getId() {
@@ -38,11 +39,11 @@ public class Movement implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getTimestamp() {
+    public Date getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDate timestamp) {
+    public void setTimestamp(Date timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -69,10 +70,15 @@ public class Movement implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    @Override
-    public String toString() {
-        return "Movement{" + "id=" + id + ", timestamp=" + timestamp + ", amount=" + amount + ", balance=" + balance + ", description=" + description + '}';
+    
+    public Double getDestination() {
+        return destination;
     }
     
+    public void setDestination(Double destination) {
+        this.destination = destination;
+    }
+            
+
+   
 }
