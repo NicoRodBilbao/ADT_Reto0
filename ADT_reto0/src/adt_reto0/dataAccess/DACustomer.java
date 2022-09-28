@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class DACustomer extends MasterConnection implements Customerable {
     
-    public static void createCustomer(Integer customerId, String firstName, String lastName, String middleInitial, String street, String city, String state, String email, Integer zip, Integer phone) {
+    void createCustomer(Integer customerId, String firstName, String lastName, String middleInitial, String street, String city, String state, String email, Integer zip, Integer phone) {
         try {
             openConnection();
             stmt = con.prepareStatement(insertar); // Prepare SQL sentence to insert the data
@@ -32,7 +32,7 @@ public class DACustomer extends MasterConnection implements Customerable {
         }
     }
     
-    public static Customer getCustomerData(Integer customerId) {
+    Customer getCustomerData(Integer customerId) {
         Customer cus = null;
         try {
             openConnection();
@@ -59,7 +59,7 @@ public class DACustomer extends MasterConnection implements Customerable {
         return cus; 
     }
     
-    public static ArrayList getCustomerAccounts(Integer customerId) {
+    ArrayList getCustomerAccounts(Integer customerId) {
         ArrayList arrayAcc = new ArrayList<Account>();
         
         try {
@@ -85,16 +85,16 @@ public class DACustomer extends MasterConnection implements Customerable {
     }
     
     // SQL statement declaration
-    private static final String insertar = 
+    private final String insertar = 
         "INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
-    private static final String buscar = 
+    private final String buscar = 
         "SELECT * FROM customer WHERE id  = ?";
     
-    private static final String  contarCuentas =
+    private final String  contarCuentas =
         "SELECT COUNT * FROM customer_account WHERE customers_id = ?";
     
-    private static final String getCuentas =
+    private final String getCuentas =
         "SELECT accounts_id, account.balance, account.beginBalance, account.beginBalanceTimestamp, account.creditLine, account.description, account.type\n" +
         "FROM customer_account\n" +
         "RIGHT JOIN account\n" +
