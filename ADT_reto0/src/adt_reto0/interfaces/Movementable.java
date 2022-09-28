@@ -7,10 +7,6 @@ package adt_reto0.interfaces;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author nikol
- */
 public interface Movementable {
     public void registerMovement(Double destination, Double amount);
     

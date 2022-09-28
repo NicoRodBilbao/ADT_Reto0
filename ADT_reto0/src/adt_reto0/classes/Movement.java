@@ -4,19 +4,15 @@
  * and open the template in the editor.
  */
 package adt_reto0.classes;
-
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
-
 
 /**
  *
  * @author nikol
  */
-
-public class Movement implements Serializable{
-
+public class Movement implements Serializable {
     private Integer id;
     private Date timestamp;
     private Double amount;
@@ -26,7 +22,6 @@ public class Movement implements Serializable{
 
     public Movement() {
     }
-
 
     public Movement(Integer id, Double amount, Double balance, String description, Date timestamp, Double destination) {
         this.id = id;
@@ -98,8 +93,5 @@ public class Movement implements Serializable{
         }
         final Movement other = (Movement) obj;
         return true;
-    }
-            
-    
-   
+    }   
 }
