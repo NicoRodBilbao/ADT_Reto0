@@ -59,9 +59,9 @@ class		DAMovement {
 	- Movement[]	getAccountMovements(accId)
 }
 
-DACustomer .left.|> Customerable
-DAAccount  .left.|> Accountable
-DAMovement .left.|> Movementable
+DACustomer .down.|> Customerable
+DAAccount  .down.|> Accountable
+DAMovement .down.|> Movementable
 
 CustomerDAFactory -down-> DACustomer  
 AccountDAFactory  -down-> DAAccount  
@@ -80,5 +80,11 @@ Movementable -down-> Movement
 Movementable --> Account
 Customerable --> Account
 Accountable  --> Customer
+
+DACustomer -right[hidden]- DAAccount
+DAAccount  -right[hidden]- DAMovement
+
+Customer -right[hidden]- Account
+Account  -right[hidden]- Movement
 
 @enduml
