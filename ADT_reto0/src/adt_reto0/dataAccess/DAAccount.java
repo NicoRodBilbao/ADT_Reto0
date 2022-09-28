@@ -10,11 +10,11 @@ import adt_reto0.interfaces.Accountable;
 
 public class DAAccount implements Accountable{
     
-    void createAccount(Integer customerId) {
+    public static void createAccount(Account customerId) {
         
     }
     
-    void addClientToAccount(Integer customerId, Integer accountId) {
+    public static void addClientToAccount(Integer customerId, Integer accountId) {
         
     }
     

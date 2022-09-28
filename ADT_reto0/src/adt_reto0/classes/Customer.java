@@ -5,11 +5,13 @@
  */
 package adt_reto0.classes;
 
+import java.io.Serializable;
+
 /**
  *
  * @author nikol
  */
-public class Customer implements Serializable {
+public class Customer implements Serializable, Comparable<Customer> {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -125,6 +127,11 @@ public class Customer implements Serializable {
     @Override
     public String toString() {
         return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleInitial=" + middleInitial + ", street=" + street + ", city=" + city + ", state=" + state + ", email=" + email + ", zip=" + zip + ", phone=" + phone + '}';
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return id.compareTo(o.getId());
     }
 
 }
