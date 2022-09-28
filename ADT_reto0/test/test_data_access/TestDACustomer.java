@@ -77,12 +77,11 @@ public class TestDACustomer extends MasterConnection {
         }
     }
     
-    /*private final String insertarCus1 = 
+    private final String insertarCus1 = 
         "INSERT INTO customer VALUES (1, Bilbao, email, Nicolas, Rodriguez, B, 123456789, California, Sq, 48002)";
     
     private final String insertarCus2 = 
         "INSERT INTO customer VALUES (2, Bilbao, email, Markel, Fernandez, S, 123456789, California, Sq, 48002)";  
-    
     
     
     private final String insertarAcc1 = 
@@ -97,10 +96,9 @@ public class TestDACustomer extends MasterConnection {
     
     private final String insertarCusAcc2 = 
         "INSERT INTO customer_account VALUES (1, 2)"; 
-    
-    
+
     private final String buscarCus =
-        "SELECT id FROM customer WHERE id = ?";*/
+        "SELECT id FROM customer WHERE id = ?";
     
     
     private final String borrarCus =
