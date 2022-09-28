@@ -7,7 +7,6 @@ package adt_reto0.classes;
 
 import java.io.Serializable;
 
-
 public class Customer implements Serializable{
 
     private Integer id;
@@ -125,6 +124,11 @@ public class Customer implements Serializable{
     @Override
     public String toString() {
         return "Customer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", middleInitial=" + middleInitial + ", street=" + street + ", city=" + city + ", state=" + state + ", email=" + email + ", zip=" + zip + ", phone=" + phone + '}';
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return id.compareTo(o.getId());
     }
 
 }

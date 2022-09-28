@@ -14,10 +14,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 
-/**
- *
- * @author nikol
- */
 public class DAAccount extends MasterConnection implements Accountable {
     
     
@@ -29,8 +25,7 @@ public class DAAccount extends MasterConnection implements Accountable {
     final String searchAccountId = "SELECT a.id FROM account where id = ?";
     
     Scanner sc = new Scanner(System.in);
-    
-    
+ 
         
     public void createAccount(Account personalData) {
             
@@ -94,6 +89,7 @@ public class DAAccount extends MasterConnection implements Accountable {
     
     }
     
+
     public boolean addClientToAccount(Integer customerId, Integer accountId) {
         boolean added = false;
         try {

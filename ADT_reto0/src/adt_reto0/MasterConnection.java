@@ -8,20 +8,27 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public abstract class MasterConnection {
-    protected Connection con;
-    protected PreparedStatement stmt;
-    protected ResultSet rs;
+    protected static Connection con;
+    protected static PreparedStatement stmt;
+    protected static ResultSet rs;
     // access to the configuration file.
+<<<<<<< HEAD
+    protected static ResourceBundle configFile = 
+        ResourceBundle.getBundle("adt_reto0.config");;
+    protected static String 
+        db = configFile.getString("DB"),
+=======
     protected ResourceBundle configFile = 
         ResourceBundle.getBundle("adt_reto0.config");;
     protected String 
+>>>>>>> 3484a3b54427ef39d23be40342a3e7a06945a1cc
         url = configFile.getString("Conn"),
         user = configFile.getString("DBUser"),
         pass = configFile.getString("DBPass");
 
     
 
-    protected void openConnection() {
+    protected static void openConnection() {
         con = null;
         try {
             con = DriverManager.getConnection(url, user, pass);
@@ -30,7 +37,7 @@ public abstract class MasterConnection {
         }
     }
 
-    protected void closeConnection() {
+    protected static void closeConnection() {
         try {
             if (stmt != null) 
             stmt.close();
