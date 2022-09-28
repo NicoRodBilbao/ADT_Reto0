@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package adt_reto0.dataAccess;
+package test_data_access;
 
 import adt_reto0.classes.Movement;
+import adt_reto0.dataAccess.DAMovement;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -69,7 +69,7 @@ public class DAMovement extends MasterConnection implements Movementable{
      * Get a movement
      * @param id
      */
-    Movement getMovement(double id){
+    public Movement getMovement(double id){
        Movement mov = null;
         try {
             openConnection();
