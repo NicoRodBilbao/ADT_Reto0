@@ -5,8 +5,7 @@
  */
 package adt_reto0.classes;
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.Objects;
+import java.util.Date;
 
 /**
  *
