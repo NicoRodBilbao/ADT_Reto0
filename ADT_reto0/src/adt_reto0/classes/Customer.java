@@ -7,7 +7,7 @@ package adt_reto0.classes;
 
 import java.io.Serializable;
 
-public class Customer implements Serializable{
+public class Customer implements Serializable, Comparable<Customer>{
 
     private Integer id;
     private String firstName;

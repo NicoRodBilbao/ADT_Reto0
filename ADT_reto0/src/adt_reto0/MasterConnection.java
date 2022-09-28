@@ -12,16 +12,9 @@ public abstract class MasterConnection {
     protected static PreparedStatement stmt;
     protected static ResultSet rs;
     // access to the configuration file.
-<<<<<<< HEAD
     protected static ResourceBundle configFile = 
         ResourceBundle.getBundle("adt_reto0.config");;
     protected static String 
-        db = configFile.getString("DB"),
-=======
-    protected ResourceBundle configFile = 
-        ResourceBundle.getBundle("adt_reto0.config");;
-    protected String 
->>>>>>> 3484a3b54427ef39d23be40342a3e7a06945a1cc
         url = configFile.getString("Conn"),
         user = configFile.getString("DBUser"),
         pass = configFile.getString("DBPass");

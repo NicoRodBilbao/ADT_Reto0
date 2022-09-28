@@ -16,15 +16,17 @@ import org.junit.Test;
 public class TestDACustomer extends MasterConnection {
     
     private Customer testCustomer;
+    private DACustomer Dac;
+    private DAAccount Daa;
     
     @Before
     public void setUp() {
-        DACustomer.createCustomer(1, "Nicolas", "Rodriguez", "B", "Sq", "Bilbao", "California", "a@b.com", 48002, 666666666);
-        DACustomer.createCustomer(2, "Markel", "Fernandez", "S", "Sq", "Bilbao", "California", "b@b.com", 48002, 666666665);
-        DAAccount.createAccount(new Account(1,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
-        DAAccount.createAccount(new Account(2,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
-        DAAccount.addClientToAccount(1, 1);
-        DAAccount.addClientToAccount(1, 2);
+        Dac.createCustomer(1, "Nicolas", "Rodriguez", "B", "Sq", "Bilbao", "California", "a@b.com", 48002, 666666666);
+        Dac.createCustomer(2, "Markel", "Fernandez", "S", "Sq", "Bilbao", "California", "b@b.com", 48002, 666666665);
+        Daa.createAccount(new Account(1,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
+        Daa.createAccount(new Account(2,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
+        Daa.addClientToAccount(1, 1);
+        Daa.addClientToAccount(1, 2);
     }    
     
     @Test
