@@ -6,9 +6,11 @@
 package adt_reto0.interfaces;
 
 import java.util.ArrayList;
+import java.util.Date;
+import adt_reto0.classes.Movement;
 
 public interface Movementable {
-    public void registerMovement(Double destination, Double amount);
+    public void registerMovement(Integer id, Double amount, Double balance, String description, Date timestamp, Double destination);
     
-    public ArrayList getAccountMovements(Double accountId);
+    public ArrayList<Movement> getAccountMovements(Double accountId);
 }

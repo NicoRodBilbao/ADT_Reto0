@@ -2,21 +2,13 @@ package adt_reto0;
 
 public class ExceptionManager {
 
-    private ExceptionManager myExceptionManager;
-
-    private ExceptionManager() {
-        //TODO?
+    public ExceptionManager() {
     }
-    
-    public ExceptionManager getExceptionManager() {
-        if(this.myExceptionManager == null)
-            myExceptionManager = new ExceptionManager();
-        return this.myExceptionManager;
-    }
-    
 
-    private void throwException(int Henrique) {
-        //TODO
+    public void throwException(Exception e) {
+        System.out.println("RUNTIME ERROR... printing stacktrace:");
+        e.printStackTrace();
+
     }
      
 }
