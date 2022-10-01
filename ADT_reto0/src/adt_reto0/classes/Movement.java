@@ -92,8 +92,5 @@ public class Movement implements Serializable {
         }
         final Movement other = (Movement) obj;
         return true;
-    }
-            
-    
-   
+    }   
 }

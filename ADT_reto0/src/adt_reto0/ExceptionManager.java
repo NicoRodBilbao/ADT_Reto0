@@ -8,6 +8,7 @@ public class ExceptionManager {
     public void throwException(Exception e) {
         System.out.println("RUNTIME ERROR... printing stacktrace:");
         e.printStackTrace();
+
     }
      
 }

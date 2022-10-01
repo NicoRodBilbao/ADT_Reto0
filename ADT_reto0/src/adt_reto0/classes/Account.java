@@ -3,11 +3,7 @@ package adt_reto0.classes;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- *
- * @author nikol
- */
-public class Account implements Serializable {
+public class Account implements Serializable{
         private Integer id;
         private String description;
         private Double balance;
@@ -81,10 +77,18 @@ public class Account implements Serializable {
     public void setBeginBalanceTimestamp(Date beginBalanceTimestamp) {
         this.beginBalanceTimestamp = beginBalanceTimestamp;
     }
+    
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
     @Override
     public String toString() {
-        return "Account{" + "id=" + id + ", description=" + description + ", balance=" + balance + ", creditLine=" + creditLine + ", beginBalance=" + beginBalance + ", beginBalanceTimestamp=" + beginBalanceTimestamp +'}';
+        return "Account{" + "id=" + id + ", description=" + description + ", balance=" + balance + ", creditLine=" + creditLine + ", beginBalance=" + beginBalance + ", beginBalanceTimestamp=" + beginBalanceTimestamp + ", type= " + type + '}';
     }
         
 }

@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import adt_reto0.classes.Movement;
 
-/**
- *
- * @author nikol
- */
 public interface Movementable {
     public void registerMovement(Integer id, Double amount, Double balance, String description, Date timestamp, Double destination);
     

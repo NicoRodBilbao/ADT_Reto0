@@ -7,6 +7,8 @@ import adt_reto0.dataAccess.DAAccount;
 import adt_reto0.dataAccess.DACustomer;
 import adt_reto0.classes.Customer;
 import adt_reto0.classes.Account;
+import java.util.ArrayList;
+import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,45 +16,67 @@ import org.junit.Test;
 public class TestDACustomer extends MasterConnection {
     
     private Customer testCustomer;
+    private DACustomer Dac;
+    private DAAccount Daa;
     
-
+    @Before
+    public void setUp() {
+        Dac.createCustomer(1, "Nicolas", "Rodriguez", "B", "Sq", "Bilbao", "California", "a@b.com", 48002, 666666666);
+        Dac.createCustomer(2, "Markel", "Fernandez", "S", "Sq", "Bilbao", "California", "b@b.com", 48002, 666666665);
+        Daa.createAccount(new Account(1,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
+        Daa.createAccount(new Account(2,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
+        Daa.addClientToAccount(1, 1);
+        Daa.addClientToAccount(1, 2);
+    }    
+    
     @Test
     public void testCreateClient() {
-        System.err.println("aaaaaaaaaaaaaaaa");
-         try {
-             System.out.println("1");
+         assertEquals((Integer)1, DACustomer.getCustomerData(1).getId());
+    }
+    
+    @Test
+    public void testGetCustomerData() {
+        assertEquals(0, DACustomer.getCustomerData(1).compareTo(testCustomer));
+    }
+    
+    @Test
+    public void testGetCustomerAccounts() {
+        ArrayList custList = DACustomer.getCustomerAccounts(1);
+        assertEquals(2, custList.size());
+    }
+    
+    @After
+    public void tearDown() {
+        try {
             openConnection();
-             System.out.println("2");
-            // Data Insert tests
-            stmt = con.prepareStatement(insertarCus1);
+            // DELETE all created customers and accounts relations
+            stmt = con.prepareStatement(borrarCusAcc);
+            stmt.setInt(1, 1);
+            stmt.setInt(2, 1);
             stmt.executeUpdate();
-            stmt = con.prepareStatement(insertarCus2);
+            stmt = con.prepareStatement(borrarCusAcc);
+            stmt.setInt(1, 1); 
+            stmt.setInt(2, 2);
             stmt.executeUpdate();
-            stmt = con.prepareStatement(insertarAcc1);
+            // DELETE all created accounts during the tests
+            stmt = con.prepareStatement(borrarCus);
+            stmt.setInt(1, 1); 
             stmt.executeUpdate();
-            stmt = con.prepareStatement(insertarAcc2);
+            stmt = con.prepareStatement(borrarCus);
+            stmt.setInt(1, 2); 
             stmt.executeUpdate();
-            stmt = con.prepareStatement(insertarCusAcc1);
+            // DELETE all created customers created during the tests
+            stmt = con.prepareStatement(borrarCus);
+            stmt.setInt(1, 1); 
             stmt.executeUpdate();
-            stmt = con.prepareStatement(insertarCusAcc2);
+            stmt = con.prepareStatement(borrarCus);
+            stmt.setInt(1, 2); 
             stmt.executeUpdate();
-            
         } catch(Exception e) {
             e.printStackTrace();
         } finally {
             closeConnection();
         }
-         assertEquals("a","a");
-    }
-    
-    @Test
-    public void testGetCustomerData() {
-        //TODO
-    }
-    
-    @Test
-    public void testGetCustomerAccounts() {
-        //TODO
     }
     
     private final String insertarCus1 = 
@@ -74,5 +98,18 @@ public class TestDACustomer extends MasterConnection {
     
     private final String insertarCusAcc2 = 
         "INSERT INTO customer_account VALUES (1, 2)"; 
+
+    private final String buscarCus =
+        "SELECT id FROM customer WHERE id = ?";
+    
+    
+    private final String borrarCus =
+        "DELETE FROM customer WHERE id = ?";
+    
+    private final String borrarAcc =
+        "DELETE FROM account WHERE id = ?";
+    
+    private final String borrarCusAcc =
+        "DELETE FROM customer_account WHERE customers_id = ? AND accounts_id = ?";
     
 }
