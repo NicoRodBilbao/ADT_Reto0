@@ -12,7 +12,7 @@ public class Menu {
 	private Scanner console = new Scanner(System.in);
 
 	private List<String> managerOptions =
-		new ArrayList<String>(List.of(
+		new ArrayList<String>(Arrays.asList(
 			"Manage customers"
 			,"Manage accounts"
 			,"Manage movements"
@@ -20,7 +20,7 @@ public class Menu {
 	);
 		
 	private List<String> customerOptions =
-		new ArrayList<String>(List.of(
+		new ArrayList<String>(Arrays.asList(
 			"Create customer"
 			,"Check customer data"
 			,"List the customer's accounts"
@@ -28,7 +28,7 @@ public class Menu {
 	);
 		
 	private List<String> accountOptions =
-		new ArrayList<String>(List.of(
+		new ArrayList<String>(Arrays.asList(
 			"Create account"
 			,"Check account data"
 			,"List the customers associated with account"
@@ -36,7 +36,7 @@ public class Menu {
 	);
 		
 	private List<String> movementOptions =
-		new ArrayList<String>(List.of(
+		new ArrayList<String>(Arrays.asList(
 			"Make a movement"
 			,"Check account's movements"
 		)
@@ -58,14 +58,6 @@ public class Menu {
 		return console.nextInt();
 	}
 	
-	private int[] getParams(String s) {
-		System.out.print("\nIntroduce the " + s + ": ");
-		String[] input = console.next().split(" ");
-		return Arrays.stream(input)
-			.mapToInt(p -> Integer.parseInt(p))
-			.toArray();
-	}
-
 	private void menuManager() {
 		int option = -1;
 		while(option != 0) {
@@ -100,8 +92,7 @@ public class Menu {
 				case 0:
 					break;
 				case 1:
-					param = getParams("Customer Id");
-					CustomerDAFactory.getAccessCustomer().createCustomer(param[0]);
+					this.createCustomer();
 					break;
 				case 2:
 					param = getParams("Customer Id");
@@ -156,8 +147,7 @@ public class Menu {
 				case 0:
 					break;
 				case 1:
-					param = getParams("Source Account && Destination Account && Ammount");
-					MovementADFactory.getAccessMovement().registerMovement(param[0], param[1], param[2]);
+					this.registerMovement();
 					break;
 				case 2:
 					param = getParams("Account Id");
@@ -172,6 +162,35 @@ public class Menu {
 
 	private void start() {
 		this.menuManager();
+	}
+
+	private void createCustomer() {
+		Param<Integer> param1 = new Param<>(Integer.class,"Id");
+		Param<String> param2 = new Param<>(String.class,"firstName");
+		Param<String> param3 = new Param<>(String.class,"lastName");
+		Param<String> param4 = new Param<>(String.class,"middleInitial");
+		Param<String> param5 = new Param<>(String.class,"street");
+		Param<String> param6 = new Param<>(String.class,"city");
+		Param<String> param7 = new Param<>(String.class,"state");
+		Param<String> param8 = new Param<>(String.class,"email");
+		Param<Integer> param9 = new Param<>(Integer.class,"zip");
+		Param<Integer> param10 = new Param<>(Integer.class,"phone");
+		DACustomer cus = CustomerDAFactory.getAccessCustomer();
+		cus.createCustomer(param1.getParams();
+			, param2.getParams()
+			, param3.getParams()
+			, param4.getParams()
+			, param5.getParams()
+			, param6.getParams()
+			, param7.getParams()
+			, param8.getParams()
+			, param9.getParams()
+			, param10.getParams());
+	}
+	
+	private void registerMovement() {
+		param = getParams("Source Account && Destination Account && Ammount");
+		MovementADFactory.getAccessMovement().registerMovement(param[0], param[1], param[2]);
 	}
 	
 }

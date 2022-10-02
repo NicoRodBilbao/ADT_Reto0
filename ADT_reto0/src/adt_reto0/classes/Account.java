@@ -1,10 +1,18 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package adt_reto0.classes;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.ArrayList;
 
 public class Account implements Serializable{
         private Integer id;
+        private ArrayList<Customer> customers; 
+        private ArrayList<Movement> movements; 
         private String description;
         private Double balance;
         private Double creditLine;
@@ -22,6 +30,7 @@ public class Account implements Serializable{
 
     public Account(Integer id, String description, Double balance, Double creditLine, Double beginBalance, Date beginBalanceTimestamp, Integer type) {
         this.id = id;
+        this.customers = new ArrayList<Customer>();
         this.description = description;
         this.balance = balance;
         this.creditLine = creditLine;
@@ -32,6 +41,14 @@ public class Account implements Serializable{
 
     public Integer getId() {
         return id;
+    }
+    
+    public void addCustomer(Customer c) {
+        this.customers.add(c);
+    }
+
+    public void addMovement(Movement m) {
+        this.movements.add(m);
     }
 
     public void setId(Integer id) {

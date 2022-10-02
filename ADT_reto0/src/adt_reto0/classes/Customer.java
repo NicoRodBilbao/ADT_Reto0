@@ -6,10 +6,12 @@
 package adt_reto0.classes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Customer implements Serializable, Comparable<Customer>{
 
     private Integer id;
+    private ArrayList<Account> accounts;
     private String firstName;
     private String lastName;
     private String middleInitial;
@@ -29,6 +31,7 @@ public class Customer implements Serializable, Comparable<Customer>{
     
     public Customer(Integer id, String firstName, String lastName, String middleInitial, String street, String city, String state, String email, Integer zip, Integer phone) {
         this.id = id;
+        this.accounts = new ArrayList<Account>();
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleInitial = middleInitial;
@@ -43,6 +46,10 @@ public class Customer implements Serializable, Comparable<Customer>{
     
     public Integer getId() {
         return id;
+    }
+    
+    public void addAccount(Account a) {
+        this.accounts.add(a);
     }
 
     public void setId(Integer id) {
