@@ -15,21 +15,19 @@ public class FileDAAccount implements Accountable {
     public void createAccount(Account a) {
         fmAccount.addObject(a);
     }
+
     @Override
     public Account getAccountData(Integer id) {
         return fmAccount.getLastMatch(c -> c.getId().equals(id));
     }
-    
-    public ArrayList<Account> getAccountCustomers(Integer id) {
-        // TODO relate Account to account in order to search
-        // for the accounts related to a Account
-        return null;
-    }
 
-    @Override
-    public boolean addClientToAccount(Integer customerId, Integer accountId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public boolean addClientToAccount(Integer customerId, Integer accountId) {
+		Account acc = fmAccount.getLastMatch(a -> a.getId().equals(accountId));
+		acc.addCustomer(fmCustomer.getLastMatch(c -> c.getId().equals(customerId)));
+		fmAccount.addObject(acc);
+		return false;
+	}
    
 }
 
