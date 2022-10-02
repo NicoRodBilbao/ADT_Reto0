@@ -3,6 +3,7 @@ package adt_reto0.classes;
 import java.io.Serializable;
 import java.util.Date;
 
+
 public class Account implements Serializable{
         private Integer id;
         private String description;

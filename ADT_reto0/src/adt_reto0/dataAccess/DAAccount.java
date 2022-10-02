@@ -8,9 +8,7 @@ package adt_reto0.dataAccess;
 import adt_reto0.classes.Account;
 import adt_reto0.interfaces.Accountable;
 import adt_reto0.MasterConnection;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
@@ -22,11 +20,12 @@ public class DAAccount extends MasterConnection implements Accountable {
     final String getAccData = "SELECT * FROM account where id = ?";
     final String insertCustomersAccounts = "INSERT INTO customer_account(customers_id, accounts_id) values (?,?) ";
     final String searchCustomerId = "SELECT id FROM customer where id = ?";
-    final String searchAccountId = "SELECT a.id FROM account where id = ?";
+    final String searchAccountId = "SELECT id FROM account where id = ?";
     
     Scanner sc = new Scanner(System.in);
- 
+    LocalDate ld;
         
+    @Override
     public void createAccount(Account personalData) {
             
             try {
@@ -58,12 +57,7 @@ public class DAAccount extends MasterConnection implements Accountable {
                       System.out.println("What was the beginning balance of the account?");
                       personalData.setBeginBalance( sc.nextDouble());
                       stmt.setDouble(3,personalData.getBeginBalance());
-                      System.out.println("Insert the begin balance timestamp (dd/MM/yyyy)");
-                      String dateLikeText = sc.next();
-                      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                      Date date  = sdf.parse(dateLikeText);
-                      personalData.setBeginBalanceTimestamp(date);
-                      stmt.setDate(4, (java.sql.Date) personalData.getBeginBalanceTimestamp());
+                      stmt.setDate(4,java.sql.Date.valueOf(LocalDate.now()));
                       System.out.println("Insert the credit line.");
                       personalData.setCreditLine(sc.nextDouble());
                       stmt.setDouble(5, personalData.getCreditLine());
@@ -90,6 +84,7 @@ public class DAAccount extends MasterConnection implements Accountable {
     }
     
 
+    @Override
     public boolean addClientToAccount(Integer customerId, Integer accountId) {
         boolean added = false;
         try {
@@ -117,12 +112,14 @@ public class DAAccount extends MasterConnection implements Accountable {
             
             }
         } catch (Exception e) {
+            System.err.print(e.getMessage());
         }finally{
             closeConnection();
         }
         return added;
     }
     
+    @Override
     public Account getAccountData(Integer accountId) {
         Account personalAcc = null;
         try {
