@@ -9,7 +9,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.function.Function;
 import java.util.ArrayList;
-import adt_reto0.exceptions.*;
 
 public class FileManager<T> {
 

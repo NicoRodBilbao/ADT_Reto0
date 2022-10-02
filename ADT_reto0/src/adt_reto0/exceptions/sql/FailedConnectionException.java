@@ -1,6 +1,6 @@
 package adt_reto0.exceptions.sql;
 
-public class FailedConnectionsException
+public class FailedConnectionException
 extends Exception {
     
     public FailedConnectionException(String errorMsg) {

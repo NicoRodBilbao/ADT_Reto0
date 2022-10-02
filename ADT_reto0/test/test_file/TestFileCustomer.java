@@ -2,6 +2,10 @@ package test_file;
 
 import org.junit.Assert.*;
 import adt_reto0.dataAccess.FileDACustomer;
+import java.io.File;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 public class TestFileCustomer {
 	private File normalData = new File("bankrecords.dat");

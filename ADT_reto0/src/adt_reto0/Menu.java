@@ -170,7 +170,7 @@ public class Menu {
 		}
 	}
 
-	private void start() {
+	void start() {
 		this.menuManager();
 	}
 	
