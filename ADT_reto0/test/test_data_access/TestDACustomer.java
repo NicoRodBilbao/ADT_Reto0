@@ -31,7 +31,6 @@ public class TestDACustomer extends MasterConnection {
     
     @Test
     public void testCreateClient() {
-        System.err.print("AAA");
          assertEquals((Integer)1, DACustomer.getCustomerData(1).getId());
     }
     
