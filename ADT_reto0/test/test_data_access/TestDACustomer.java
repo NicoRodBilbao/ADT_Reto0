@@ -16,32 +16,32 @@ import org.junit.Test;
 public class TestDACustomer extends MasterConnection {
     
     private Customer testCustomer;
-    private DACustomer Dac;
-    private DAAccount Daa;
+    private static DACustomer dac;
+    private static DAAccount daa;
     
     @Before
     public void setUp() {
-        Dac.createCustomer(1, "Nicolas", "Rodriguez", "B", "Sq", "Bilbao", "California", "a@b.com", 48002, 666666666);
-        Dac.createCustomer(2, "Markel", "Fernandez", "S", "Sq", "Bilbao", "California", "b@b.com", 48002, 666666665);
-        Daa.createAccount(new Account(1,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
-        Daa.createAccount(new Account(2,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
-        Daa.addClientToAccount(1, 1);
-        Daa.addClientToAccount(1, 2);
+        dac.createCustomer(1, "Nicolas", "Rodriguez", "B", "Sq", "Bilbao", "California", "a@b.com", 48002, 666666666);
+        dac.createCustomer(2, "Markel", "Fernandez", "S", "Sq", "Bilbao", "California", "b@b.com", 48002, 666666665);
+        daa.createAccount(new Account(1,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
+        daa.createAccount(new Account(2,"a",1.0,1.0,1.0,new Date(2022, 9, 26),1));
+        daa.addClientToAccount(1, 1);
+        daa.addClientToAccount(1, 2);
     }    
     
     @Test
     public void testCreateClient() {
-         assertEquals((Integer)1, DACustomer.getCustomerData(1).getId());
+         assertEquals((Integer)1, dac.getCustomerData(1).getId());
     }
     
     @Test
     public void testGetCustomerData() {
-        assertEquals(0, DACustomer.getCustomerData(1).compareTo(testCustomer));
+        assertEquals(0, dac.getCustomerData(1).compareTo(testCustomer));
     }
     
     @Test
     public void testGetCustomerAccounts() {
-        ArrayList custList = DACustomer.getCustomerAccounts(1);
+        ArrayList custList = dac.getCustomerAccounts(1);
         assertEquals(2, custList.size());
     }
     

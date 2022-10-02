@@ -7,8 +7,8 @@ import adt_reto0.MasterConnection;
 import java.util.ArrayList;
 
 public class DACustomer extends MasterConnection implements Customerable {
-    
-    public static void createCustomer(Integer customerId, String firstName, String lastName, String middleInitial, String street, String city, String state, String email, Integer zip, Integer phone) {
+    @Override
+    public void createCustomer(Integer customerId, String firstName, String lastName, String middleInitial, String street, String city, String state, String email, Integer zip, Integer phone) {
         try {
             openConnection();
             stmt = con.prepareStatement(insertar); // Prepare SQL sentence to insert the data
@@ -32,7 +32,8 @@ public class DACustomer extends MasterConnection implements Customerable {
         }
     }
     
-    public static Customer getCustomerData(Integer customerId) {
+    @Override
+    public Customer getCustomerData(Integer customerId) {
         Customer cus = null;
         try {
             openConnection();
@@ -58,8 +59,8 @@ public class DACustomer extends MasterConnection implements Customerable {
         }
         return cus; 
     }
-    
-    public static ArrayList getCustomerAccounts(Integer customerId) {
+    @Override
+    public ArrayList getCustomerAccounts(Integer customerId) {
         ArrayList arrayAcc = new ArrayList<Account>();
         
         try {

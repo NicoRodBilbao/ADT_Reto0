@@ -15,12 +15,11 @@ public class FileDAAccount implements Accountable {
     public void createAccount(Account a) {
         fmAccount.addObject(a);
     }
-    
+
     @Override
     public Account getAccountData(Integer id) {
         return fmAccount.getLastMatch(c -> c.getId().equals(id));
     }
-    
 
 	@Override
 	public boolean addClientToAccount(Integer customerId, Integer accountId) {
