@@ -14,15 +14,15 @@ public class DACustomer extends MasterConnection implements Customerable {
             stmt = con.prepareStatement(insertar); // Prepare SQL sentence to insert the data
             // Load data into the statement
             stmt.setInt(1, customerId);
-            stmt.setString(2, firstName);
-            stmt.setString(3, lastName);
-            stmt.setString(4, middleInitial);
-            stmt.setString(5, street);
-            stmt.setString(6, city);
-            stmt.setString(7, state);
-            stmt.setString(8, email);
-            stmt.setInt(9, zip);
-            stmt.setInt(10, phone);
+            stmt.setString(4, firstName);
+            stmt.setString(5, lastName);
+            stmt.setString(6, middleInitial);
+            stmt.setString(9, street);
+            stmt.setString(2, city);
+            stmt.setString(8, state);
+            stmt.setString(3, email);
+            stmt.setInt(10, zip);
+            stmt.setInt(7, phone);
             
                 stmt.executeUpdate(); // Inserts the data into the database
         } catch (Exception e) { // TODO gestionar excepción

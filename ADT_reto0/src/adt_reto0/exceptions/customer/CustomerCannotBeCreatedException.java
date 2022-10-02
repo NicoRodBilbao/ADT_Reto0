@@ -1,6 +1,6 @@
 package adt_reto0.exceptions.customer;
 
-public class CustomerCannotBeCreateException
+public class CustomerCannotBeCreatedException
 extends Exception {
 
     public CustomerCannotBeCreatedException(String errorMsg) {
