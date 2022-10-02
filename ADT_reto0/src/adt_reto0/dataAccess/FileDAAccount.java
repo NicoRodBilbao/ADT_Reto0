@@ -11,10 +11,11 @@ public class FileDAAccount implements Accountable {
     private FileManager<Account> fmAccount = new FileManager<>(Account.class);
     private FileManager<Customer> fmCustomer = new FileManager<>(Customer.class);
     
+    @Override
     public void createAccount(Account a) {
         fmAccount.addObject(a);
     }
-    
+    @Override
     public Account getAccountData(Integer id) {
         return fmAccount.getLastMatch(c -> c.getId().equals(id));
     }
@@ -23,6 +24,11 @@ public class FileDAAccount implements Accountable {
         // TODO relate Account to account in order to search
         // for the accounts related to a Account
         return null;
+    }
+
+    @Override
+    public boolean addClientToAccount(Integer customerId, Integer accountId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
 }

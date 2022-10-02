@@ -1,15 +1,18 @@
 package test_file;
 
+import adt_reto0.classes.Customer;
 import org.junit.Assert.*;
 import adt_reto0.dataAccess.FileDACustomer;
 import java.io.File;
 import org.junit.After;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TestFileCustomer {
 	private File normalData = new File("bankrecords.dat");
 	private File backupData = new File("bankrecords.dat.backup");
+        private static FileDACustomer fdac;
 
 	/**
 	* Rename the records file to do tests
@@ -19,20 +22,21 @@ public class TestFileCustomer {
 	@Before
 	public void setUp() {
 		normalData.renameTo(backupData);
-		FileDACustomer.createCustomer(1, "Nicolas", "Rodriguez", "B", "Sq", "Bilbao", "California", "a@b.com", 48002, 666666666);
+		fdac.createCustomer(1, "Nicolas", "Rodriguez", "B", "Sq", "Bilbao", "California", "a@b.com", 48002, 666666666);
 	}
 
 	@Test
 	public void testCreateCustomer() {
 		assertEquals((Integer)1,
-			FileDACustomer.getCustomerData(1)
+			fdac.getCustomerData(1)
 				.getId()
 			);
 	}
 
     @Test
     public void testGetCustomerData() {
-        assertEquals(0, FileDACustomer.getCustomerData(1).compareTo(testCustomer));
+            Customer testCustomer=null;
+        assertEquals(0, fdac.getCustomerData(1).compareTo(testCustomer));
     }
 	
 	@Test
