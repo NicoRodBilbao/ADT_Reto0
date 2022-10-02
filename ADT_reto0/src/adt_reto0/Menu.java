@@ -183,10 +183,6 @@ public class Menu {
 		}
 	}
 
-	void start() {
-		this.menuManager();
-	}
-
 	private void createCustomer() {
 		Param<Integer> param1 = new Param<>(Integer.class,"Id");
 		Param<String> param2 = new Param<>(String.class,"firstName");
@@ -212,12 +208,10 @@ public class Menu {
 	}
 	
 	private void registerMovement() {
-		//TODO
-		Param<Integer> param1 = new Param<>(Integer.class,"Source Account");
-		Param<Integer> param2 = new Param<>(Integer.class,"Destination Account");
-		Param<Double>  param3 = new Param<>(Double.class, "Ammount");
+		Param<Double> param1 = new Param<>(Double.class,"Destination Account");
+		Param<Double> param2 = new Param<>(Double.class, "Ammount");
 		MovementADFactory.getAccessMovement()
-			.registerMovement(param1.getParams(), param2.getParams(), param3.getParams());
+			.registerMovement(param1.getParams(), param2.getParams());
 	}
 	
 
@@ -237,6 +231,10 @@ public class Menu {
 		Param<Integer> param1 = new Param<>(Integer.class,"Account Id");
 		Account a = AccountADFactory.getAccessAccount().getAccountData(param1.getParams());
 		a.getMovements().forEach(p -> System.out.println(p.toString()));
+	}
+
+	public void start() {
+		this.menuManager();
 	}
 	
 }
