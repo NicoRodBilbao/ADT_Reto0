@@ -50,6 +50,10 @@ public class Account implements Serializable{
     public void addMovement(Movement m) {
         this.movements.add(m);
     }
+    
+    public ArrayList<Movement> getMovements() {
+        return this.movements;
+    }
 
     public void setId(Integer id) {
         this.id = id;
